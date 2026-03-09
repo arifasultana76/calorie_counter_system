@@ -15,6 +15,8 @@ class AuthUserModel(AbstractUser):
     def __str__(self):
         return self.username
     
+# ekhane auth model and user model 2 ta model k 1 ta model e merge korechi.
+
 class CalorieEntryModel(models.Model):
     user = models.ForeignKey(AuthUserModel, on_delete=models.CASCADE, related_name='calorie_entries')
     item_name = models.CharField(max_length=250, null = True, blank = True)
