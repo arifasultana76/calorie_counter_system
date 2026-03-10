@@ -1,0 +1,171 @@
+{% extends "master/base.html" %}
+
+{% block body %}
+
+<div class="container">
+
+    <div class="header">
+        <h2>Your Calorie Entries</h2>
+
+        <a href="{% url 'add_calorie_entry' %}" class="add-btn">
+            + Add Food
+        </a>
+    </div>
+
+    <table>
+
+        <thead>
+            <tr>
+                <th>Food Item</th>
+                <th>Calories</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            {% for i in entries %}
+
+            <tr>
+                <td>{{ i.item_name }}</td>
+                <td>{{ i.calories_consumed }}</td>
+                <td>{{ i.date }}</td>
+            </tr>
+
+            {% empty %}
+
+            <tr>
+                <td colspan="3" class="empty">
+                    No calorie entries found
+                </td>
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+
+<style>
+
+body{
+font-family: 'Segoe UI';
+margin:0;
+min-height:100vh;
+
+background: linear-gradient(-45deg,#ee7752,#e73c7e,#23a6d5,#23d5ab);
+background-size:400% 400%;
+animation:gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+.container{
+
+width:90%;
+max-width:900px;
+
+margin:120px auto;
+
+background:white;
+
+padding:40px;
+
+border-radius:15px;
+
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+
+}
+
+.header{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:30px;
+
+}
+
+h2{
+
+margin:0;
+
+color:#333;
+
+}
+
+.add-btn{
+
+background:#23a6d5;
+
+color:white;
+
+padding:10px 20px;
+
+text-decoration:none;
+
+border-radius:30px;
+
+font-weight:bold;
+
+}
+
+.add-btn:hover{
+
+background:#1d8cb5;
+
+}
+
+table{
+
+width:100%;
+
+border-collapse:collapse;
+
+}
+
+th, td{
+
+padding:15px;
+
+text-align:center;
+
+border-bottom:1px solid #eee;
+
+}
+
+th{
+
+background:#23a6d5;
+
+color:white;
+
+}
+
+tr:hover{
+
+background:#f9f9f9;
+
+}
+
+.empty{
+
+color:#999;
+
+font-style:italic;
+
+}
+
+</style>
+
+{% endblock %}

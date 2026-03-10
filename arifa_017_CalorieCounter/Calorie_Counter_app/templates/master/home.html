@@ -1,0 +1,117 @@
+{% extends "master/base.html" %}
+{% block body %}
+
+<section class="dashboard">
+
+    <h1 class="title">FitTracker</h1>
+
+    <div class="card-container">
+
+        <!-- BMR -->
+        <div class="card">
+            <h3>Required Calories</h3>
+            <p>{{ bmr }} kcal</p>
+        </div>
+
+        <!-- Consumed -->
+        <div class="card">
+            <h3>Consumed Calories</h3>
+            <p>{{ total_consumed }} kcal</p>
+        </div>
+
+        <!-- Remaining -->
+        <div class="card">
+            <h3>Remaining Calories</h3>
+            
+            <p>{{total_consumed }} kcal</p>
+            
+        </div>
+
+    </div>
+
+    <div class="action-btns">
+
+        <a href="{% url 'add_calorie_entry' %}" class="btn">Add Food</a>
+
+        <a href="{% url 'view_calorie_entries' %}" class="btn">View History</a>
+
+    </div>
+
+</section>
+
+<style>
+
+body{
+    margin:0;
+    font-family: 'Segoe UI', sans-serif;
+    min-height:100vh;
+    background: linear-gradient(-45deg,#6a11cb,#2575fc,#ff416c,#ff4b2b);
+    background-size:400% 400%;
+    animation:gradientBG 20s ease infinite;
+}
+
+@keyframes gradientBG{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+.dashboard{
+    text-align:center;
+    margin-top:120px;
+}
+
+.title{
+    color:white;
+    font-size:40px;
+    margin-bottom:40px;
+}
+
+.card-container{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    flex-wrap:wrap;
+}
+
+.card{
+    background:white;
+    padding:40px;
+    width:250px;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+.card h3{
+    color:#444;
+    margin-bottom:10px;
+}
+
+.card p{
+    font-size:28px;
+    font-weight:bold;
+    color:#2575fc;
+}
+
+.action-btns{
+    margin-top:40px;
+}
+
+.btn{
+    background:white;
+    color:#2575fc;
+    padding:12px 25px;
+    margin:10px;
+    text-decoration:none;
+    border-radius:30px;
+    font-weight:bold;
+}
+
+.btn:hover{
+    background:#2575fc;
+    color:white;
+}
+
+</style>
+
+{% endblock body %}
